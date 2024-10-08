@@ -1,40 +1,18 @@
-import { useEffect, useState } from "react"
-import ProductDetail from "./components/ProductDetail"
-import axios from "axios";
+import {Route, Routes} from "react-router-dom";
+import ProductForm from "./pages/ProductForm.jsx";
+import ProductList from "./pages/ProductList.jsx";
+import ProductDetail from "./pages/ProductDetail.jsx";
+import './style.css'
 
 function App() {
 
-  const [product, setProduct] = useState(null);
-  const [error, setError] = useState(null);
-
-
-  useEffect(() => {
-    const fetchProduct = async () => {
-      try {
-        console.log("product ", product);
-
-        const response = await axios.get('http://localhost:5000/api/products/1');
-        setProduct(response.data);
-        console.log("product ", product);
-      } catch (error) {
-        setError("Erro ao carregar os produtos");
-
-      }
-    };
-    fetchProduct()
-  }, []);
-
-  return (
-    <>
-    <div className="flex justify-center items-center h-screen bg-gray-100"></div>
-    <ProductDetail 
-      name={product.name}
-      description={product.description}
-      price={product.price}
-      quantity={product.quantity}
-    />
-    </>
-  )
+    return (
+        <Routes>
+            <Route path='/' element={<ProductList/>}/>
+            <Route path='/cadastrar' element={<ProductForm/>}/>
+            <Route path='/produto/:id' element={<ProductDetail/>}/>
+        </Routes>
+    )
 }
 
 export default App
