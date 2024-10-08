@@ -3,7 +3,8 @@ import axios from "axios";
 import {FaEdit, FaTimes} from "react-icons/fa";
 import {MdDelete} from "react-icons/md";
 import {IoMdAdd} from "react-icons/io";
-import {Await, useNavigate} from "react-router-dom";
+import {useNavigate} from "react-router-dom";
+import ProductChart from "../components/ProductChart.jsx";
 
 const ProductList = () => {
     const [products, setProducts] = useState([]);
@@ -99,7 +100,7 @@ const ProductList = () => {
 
     return (
         <div className='min-h-screen flex flex-col items-center p-4'>
-            <div className="w-full max-w-7xl mb-4 flex flex-col sm:flex-row justify-between items-center">
+            <div className="w-full max-w-7xl mb-4 flex flex-col sm:flex-row justify-between items-center mt-7">
                 <button onClick={toggleModal}
                         className="flex items-center text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center "
                         type="button">
@@ -339,6 +340,7 @@ const ProductList = () => {
                         </div>
                     </div>
                 )}
+                <ProductChart/>
             </div>
         </div>
     );
