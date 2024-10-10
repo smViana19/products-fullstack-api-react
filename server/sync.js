@@ -1,6 +1,6 @@
 const sequelize = require('./src/config/database');
 
-const Product = require('./src/models/Product')
+const { Category, Product } = require('./src/models/associations');
 
 sequelize.sync({ force: true }).then(() => {
     console.log("Sincronizado com sucesso");

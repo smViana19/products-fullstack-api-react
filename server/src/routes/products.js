@@ -13,10 +13,11 @@ router.get('/', async (req, res) => {
 
 router.post('/', async (req, res) => {
     try {
-        const { name, description, price, quantity } = req.body;
-        const product = await Product.create({ name, description, price, quantity });
+        const { name, description, price, quantity, categoryId } = req.body;
+        const product = await Product.create({ name, description, price, quantity, categoryId });
         res.status(201).json(product);
     } catch (error) {
+        console.log(error)
         return res.status(500).json({ erro: "Erro ao criar o produto." });
     }
 });
