@@ -17,14 +17,8 @@ const Product = sequelize.define('Product', {
         type: DataTypes.INTEGER,
         allowNull: false
     },
-    categoryId: {
-        type: DataTypes.INTEGER,
-        references: {
-            model: 'Categories', // Nome da tabela associada
-            key: 'id'
-        },
-        onUpdate: 'CASCADE',
-        onDelete: 'SET NULL'
+    category: {
+        type: DataTypes.ENUM('comida', 'limpeza', 'higiene', 'bebida'),
     }
 }, {
     timestamps: true

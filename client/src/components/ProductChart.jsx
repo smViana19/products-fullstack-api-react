@@ -33,7 +33,8 @@ const ProductChart = () => {
                 data: {
                     labels: productNames,
                     datasets: [{
-                        productPrices,
+                        label: "Preco dos produtos",
+                        data: productPrices,
                         backgroundColor: 'rgba(75, 192, 192, 0.2)',
                         borderColor: 'rgba(75, 192, 192, 1)',
                         borderWidth: 1
@@ -46,6 +47,7 @@ const ProductChart = () => {
                         },
                         y: {
                             type: 'linear',   // tipo de escala para o eixo Y
+                            beginAtZero: true
                         }
                     }
                 }

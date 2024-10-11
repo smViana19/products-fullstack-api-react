@@ -13,8 +13,8 @@ router.get('/', async (req, res) => {
 
 router.post('/', async (req, res) => {
     try {
-        const { name, description, price, quantity, categoryId } = req.body;
-        const product = await Product.create({ name, description, price, quantity, categoryId });
+        const { name, description, price, quantity, category } = req.body;
+        const product = await Product.create({ name, description, price, quantity, category });
         res.status(201).json(product);
     } catch (error) {
         console.log(error)
