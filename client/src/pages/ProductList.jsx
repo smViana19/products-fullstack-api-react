@@ -5,6 +5,8 @@ import { MdDelete } from "react-icons/md";
 import { IoMdAdd } from "react-icons/io";
 import { useNavigate } from "react-router-dom";
 import ProductChart from "../components/ProductChart.jsx";
+import { FaCaretDown, FaCaretUp } from 'react-icons/fa';
+
 
 const ProductList = () => {
     const [products, setProducts] = useState([]);
@@ -43,6 +45,8 @@ const ProductList = () => {
     const handleSubmit = async (e) => {
         e.preventDefault();
         try {
+            const numericPrice = parseFloat(price.replace('R$ ', '').replace('.', '').replace(',', '.'));
+
             await axios.post('http://localhost:5000/api/products', {
                 name,
                 description,
@@ -50,6 +54,7 @@ const ProductList = () => {
                 quantity,
                 category
             });
+            
             const dataForm = { name, description, price, quantity };
             console.log(dataForm)
             setIsModalOpen(false);
@@ -252,7 +257,7 @@ const ProductList = () => {
                                         {product.name}
                                     </th>
                                     <td className="px-6 py-4">{product.description}</td>
-                                    <td className="px-6 py-4">{product.price}</td>
+                                    <td className="px-6 py-4">{new Intl.NumberFormat('pt-BR', { style: 'currency', currency: 'BRL' }).format(product.price)}</td>
                                     <td className="px-6 py-4">{product.quantity}</td>
                                     <td className="px-6 py-4 text-right">
                                         <div className="flex justify-end items-center space-x-4">
