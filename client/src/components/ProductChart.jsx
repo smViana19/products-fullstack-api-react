@@ -43,10 +43,10 @@ const ProductChart = () => {
                 options: {
                     scales: {
                         x: {
-                            type: 'category',  // tipo de escala para o eixo X
+                            type: 'category',
                         },
                         y: {
-                            type: 'linear',   // tipo de escala para o eixo Y
+                            type: 'linear',
                             beginAtZero: true
                         }
                     }
